@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1462338757 source:/home/rodrigo/Documents/metrocamp/estrutura_dados/ordenacao/Ordenacao/ordenacao.c
+
+1462338179 source:/home/rodrigo/Documents/metrocamp/estrutura_dados/ordenacao/Ordenacao/main.c
+	<stdio.h>
+	<stdlib.h>
+	"ordenacao.h"
+
+1462338226 /home/rodrigo/Documents/metrocamp/estrutura_dados/ordenacao/Ordenacao/ordenacao.h
+

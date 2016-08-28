@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1462923210 source:c:\users\gcarnielli\desktop\bla\arvorebusca\arvorebusca.c
+	"ArvoreBusca.h"
+
+1463447291 ca.h"
+
+1462922865 c:\users\gcarnielli\desktop\bla\arvorebusca\arvorebusca.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1463447273 
+
+1462923064 source:c:\users\gcarnielli\desktop\bla\arvorebusca\main.c
+	"ArvoreBusca.h"
+
+1463447435 source:p:\gcarnielli\ed\praticas\arvorebusca\arvorebusca.c
+	"ArvoreBusca.h"
+
+1463447273 p:\gcarnielli\ed\praticas\arvorebusca\arvorebusca.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1463447291 source:p:\gcarnielli\ed\praticas\arvorebusca\main.c
+	"ArvoreBusca.h"
+
+1463958985 source:/home/rodrigo/Documents/metrocamp/estrutura_dados/ArvoreBusca/ArvoreBusca.c
+	"ArvoreBusca.h"
+
+1463958989 /home/rodrigo/Documents/metrocamp/estrutura_dados/ArvoreBusca/ArvoreBusca.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1463952035 source:/home/rodrigo/Documents/metrocamp/estrutura_dados/ArvoreBusca/main.c
+	"ArvoreBusca.h"
+
