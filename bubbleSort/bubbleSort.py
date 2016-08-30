@@ -1,18 +1,13 @@
 import random
 
-ARRAY_SIZE = 20
+ARRAY_SIZE = 10
 
 class Bubble():
     hasAlter = True
     bubbleIteration = []
 
-    def __init__(self, arraySize):
-        self.bubbleIteration = [None]*arraySize
-        random.seed()
-
-    def setUp(self):
-        for x in range (0,len(self.bubbleIteration)):
-            self.bubbleIteration[x] = random.randint(0,100)
+    def __init__(self, array):
+        self.bubbleIteration = array
 
     def sort(self):
         while self.hasAlter:
@@ -30,8 +25,15 @@ class Bubble():
     def getBubbleIteration(self):
         return self.bubbleIteration
 
-bubble = Bubble(10)
-bubble.setUp()
+def setUp(arraySize):
+    random.seed()
+    array = [None]*arraySize
+    for x in range (0,len(array)):
+        array[x] = random.randint(0,100)
+    return array
+
+array = setUp(ARRAY_SIZE)
+bubble = Bubble(array)
 print "=========== List ==========="
 print bubble.getBubbleIteration()
 print "=========== executing Bubble Sort ==========="
