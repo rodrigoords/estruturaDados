@@ -64,9 +64,21 @@ int push(Pilha *pilha, float elemento)
 
 }
 
+
+int peek(Pilha *pilha, float* elemento){
+    int status = OP_OK;
+    if(pilha == NULL){
+        status = ERRO_PILHA_INDEFINIDA;
+    }else if(pilha->topo == PILHA_VAZIA){
+        status = ERRO_PILHA_VAZIA;
+    }else{
+        elemento = &pilha->pilha[pilha->topo];
+    }
+    return status;
+}
+
 void imprimePilha(Pilha *pilha){
     int i;
-    printf("");
     for(i = pilha->topo; i >= 0 ; i--){
         printf("%f\n", pilha->pilha[i]);
     }

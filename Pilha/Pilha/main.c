@@ -23,5 +23,11 @@ int main()
     push(p, 47.2);
 
     imprimePilha(p);
+
+    float* retorno;
+    peek(p, retorno);
+    printf("Peek: %f", *retorno);
+
+
     return 0;
 }
