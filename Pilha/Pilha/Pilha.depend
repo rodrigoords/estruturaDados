@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1488511704 source:c:\10_projetos\pessoais\repositorios\estruturadados\pilha\pilha\main.c
+	"pilha.h"
+
+1488510840 c:\10_projetos\pessoais\repositorios\estruturadados\pilha\pilha\pilha.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1488511723 source:c:\10_projetos\pessoais\repositorios\estruturadados\pilha\pilha\pilha.c
+	"Pilha.h"
+
