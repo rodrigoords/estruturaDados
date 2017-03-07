@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1488925868 source:/home/mtuser/Documentos/git/PESSOAL/estruturaDados/ArvoreBusca_v2/main.c
+	<stdio.h>
+	<stdlib.h>
+
