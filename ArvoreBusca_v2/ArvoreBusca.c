@@ -4,9 +4,9 @@
 int busca_referencia(ArvoreNode **node, int elemento);
 ArvoreNode* cria_node(int elemento);
 int cria_filho(ArvoreNode* node, int elemento);
-int percorrePDE(ArvoreNode* node);
-int percorrePED(ArvoreNode* node);
-int percorreIN(ArvoreNode* node);
+void percorrePDE(ArvoreNode* node);
+void percorreDEP(ArvoreNode* node);
+void percorreIN(ArvoreNode* node);
 /*******************************************/
 
 ArvoreBusca* cria_abb(){
@@ -119,3 +119,35 @@ int cria_filho(ArvoreNode* node, int elemento){
     return status;
 }
 
+int percorrePDE(ArvoreNode* node){
+    printf("%d", node->info);
+    if(node->dir != NULL){
+        percorrePDE(node->dir);
+    }
+    if(node->esq != NULL){
+        percorrePDE(node->esq);
+    }
+    return OP_OK;
+}
+
+int percorreDEP(ArvoreNode* node){
+    if(node->dir != NULL){
+        percorrePDE(node->dir);
+    }
+    if(node->esq != NULL){
+        percorrePDE(node->esq);
+    }
+    printf("%d", node->info);
+    return OP_OK;
+}
+
+int percorreIN(ArvoreNode* node){
+    if(node->dir != NULL){
+        percorrePDE(node->dir);
+    }
+    printf("%d", node->info);
+    if(node->esq != NULL){
+        percorrePDE(node->esq);
+    }
+    return OP_OK;
+}
