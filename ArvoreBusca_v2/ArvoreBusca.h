@@ -16,9 +16,10 @@
 
 /* Arvore Node */
 typedef struct s_arvore_node {
+    struct s_arvore_node *pai;
     struct s_arvore_node *esq;
-    int info;
     struct s_arvore_node *dir;
+    int info;
 } ArvoreNode;
 
 /* Arvore de Busca (Header) */
@@ -35,6 +36,7 @@ int busca_abb(ArvoreBusca *a, int elem, ArvoreNode** referencia);
 int percorre_pre(ArvoreBusca *a);
 int percorre_in(ArvoreBusca *a);
 int percorre_pos(ArvoreBusca *a);
+int abb_vazia();
 
 
 /* For debugging */
