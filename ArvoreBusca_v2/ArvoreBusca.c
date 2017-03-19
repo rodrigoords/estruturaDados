@@ -12,6 +12,11 @@ void percorrePDE(ArvoreNode* node);
 void percorreDEP(ArvoreNode* node);
 /*******************************************/
 
+/*
+ Cria uma estrutura de arvore que serve como Header. Como está sendo criada não existe uma raiz
+ por isso nasce como null. 
+ O mesmo vale para o numero de nodes.
+*/
 ArvoreBusca* cria_abb(){
     ArvoreBusca *abb = (ArvoreBusca*) malloc(sizeof(ArvoreBusca));
     abb->raiz = NULL;
@@ -20,12 +25,21 @@ ArvoreBusca* cria_abb(){
     return abb;
 }
 
+/*
+ Verifica se a arvore está vazia.
+*/
 int abb_vazia(ArvoreBusca *a){
 
     return (a != NULL && a->num_nodes > 0) ? FALSE : TRUE;
 
 }
 
+/*
+ Função busca um elemento da arvore de acordo com o inteiro informado, 
+ caso a função encontre dentro da ArvoreNode.info o elemento será então
+ retornado um ponteiro apontando para o elemento. 
+ Caso não seja encontrado o elemento será retornado um ponteiro para NULL;
+*/
 int busca_abb(ArvoreBusca* a, int elem, ArvoreNode** referencia){
     int status = OP_OK;
     *referencia = NULL;
@@ -43,6 +57,9 @@ int busca_abb(ArvoreBusca* a, int elem, ArvoreNode** referencia){
     return status;
 }
 
+/*
+ Insere um novo node na arvore de acordo com as regras de uma arvore binaria.
+*/
 int insere_abb(ArvoreBusca *a, int elemento){
     int status = OP_OK;
     if(a != NULL){
@@ -67,6 +84,12 @@ int insere_abb(ArvoreBusca *a, int elemento){
     return status;
 }
 
+/*
+Remove o elemento da arvore e ajusta a arvore.
+    Ajuste: Caso um elemente se encontrado e removido em seu lugar será incluido o maior elemento que está 
+    no node a esquerda.
+    Caso o elemento deletado não contenha um node a esquerda o ajuste irá buscar o menor elemento do node a direita.
+*/
 int remove_abb(ArvoreBusca *a, int elem){
     int status = OP_OK;
     if(a != NULL){
@@ -90,7 +113,41 @@ int remove_abb(ArvoreBusca *a, int elem){
 
     return status;
 }
+/*Funções internas Implementações*/
 
+/*
+Função interna que será chamada recursivamente para remover os nodes de uma arvore.
+nela é implementada a regra de ajuste da arvore. Uma vez que um node é informado para elem_a_deletar
+a lógica busca qual o node mais a direita que está no filho esquerdo. Caso não exista um node esquerdo 
+será buscado o node mais a esquerda do filho direito.
+
+Exemplo: Caso exista filho esquerdo:
+                     **************
+                    | info_Deletar |
+                     **************
+                   /            ^
+                ***********     |
+               | info_menor|    | O node info_Deletar irá receber o valor do node info_troca ( o mais a direita abaixo do filho esquerdo)
+                ***********     |
+                    \           -
+                     ************
+                    | info_troca |
+                     ************
+
+Exemplo: Caso exista filho direito:
+
+                     **************
+                    | info_Deletar |
+                     **************
+                     ^              \              
+                     |               ***********     
+                     |              | info_menor|    | O node info_Deletar irá receber o valor do node info_troca ( o mais a esquerda abaixo do filho direito)
+                     |               ***********     
+                     -             /
+                     ************
+                    | info_troca |
+                     ************
+*/
 int remover(ArvoreNode *elem_a_deletar){
     int status = OP_OK;
     ArvoreNode *aux = NULL;
@@ -132,7 +189,12 @@ int percorre_in(ArvoreBusca *a){
     return status;
 }
 
-/*Funções internas Implementações*/
+/*
+Função interna utilizada para percorrer de forma recursiva a arvore procurando no ArvoreNode.info o elemento informado.
+A cada interação o ponteiro node é movimentado para no final caso exista o elemento procurado aponto examente para o node.
+Caso o elemento não exista o ponteiro será retornado apontando para o ultimo node que teoricamente deveria ser o pai do elemento
+procurado.
+*/
 int busca_referencia(ArvoreNode **node, int elemento){
 
     int status = ERR_ELEM_NAO_ENCONTRADO;
@@ -160,6 +222,21 @@ int busca_referencia(ArvoreNode **node, int elemento){
     return status;
 }
 
+/*
+Dado um node de arvore a função irá retornar uma ponteiro para o ultimo elemente mais a direita.
+exemplo:
+    ******
+   | node |
+    ******
+            \              
+             **********     
+            | node_dir |   
+             ********** 
+                    \              
+                     ***************   
+                    | node_mais_dir | --> Será retornado uma referencia para esse ArvoreNode;   
+                     *************** 
+*/
 void busca_ultima_referencia_direira(ArvoreNode **node){
     if(*node != NULL && (*node)->dir != NULL){
         *node = (*node)->dir;
@@ -168,6 +245,19 @@ void busca_ultima_referencia_direira(ArvoreNode **node){
     return;
 }
 
+/*
+                     ******
+                    | node |
+                     ******
+                   /            
+                **********     
+               | node_esq |    
+                ********** 
+                /            
+             ***************    
+            | node_mais_esq | --> Será retornada uma referencia para esse objeto.    
+             ***************     
+*/
 void busca_ultima_referencia_esquerda(ArvoreNode **node){
     if(*node != NULL && (*node)->esq != NULL){
         *node = (*node)->esq;
