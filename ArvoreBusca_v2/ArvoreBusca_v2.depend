@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1489605963 source:/home/mtuser/Documentos/git/PESSOAL/estruturaDados/ArvoreBusca_v2/main.c
+1490050731 source:/home/mtuser/Documentos/git/PESSOAL/estruturaDados/ArvoreBusca_v2/main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArvoreBusca.h"
 
-1489606278 source:/home/mtuser/Documentos/git/PESSOAL/estruturaDados/ArvoreBusca_v2/ArvoreBusca.c
+1490050771 source:/home/mtuser/Documentos/git/PESSOAL/estruturaDados/ArvoreBusca_v2/ArvoreBusca.c
 	"ArvoreBusca.h"
 
 1489535284 /home/mtuser/Documentos/git/PESSOAL/estruturaDados/ArvoreBusca_v2/ArvoreBusca.h

@@ -26,15 +26,20 @@ int main()
     insere_abb(arvore, 31);
     insere_abb(arvore, 35);
     insere_abb(arvore, 38);
-    printf("Arvode antes remoção \n");
+
+    printf("Arvore antes remoção \n");
     percorre_in(arvore);
+    printf("print percorre PRE antes remoção \n");
+    percorre_pre(arvore);
+    printf("print percorre POS antes remoção \n");
+    percorre_pos(arvore);
 
     remove_abb(arvore, 43);
-    printf("Arvode após remoção - 43\n");
+    printf("Arvore após remoção - 43\n");
     percorre_in(arvore);
 
     remove_abb(arvore, 71);
-    printf("Arvode após remoção - 71\n");
+    printf("Arvore após remoção - 71\n");
     percorre_in(arvore);
     return 0;
 }

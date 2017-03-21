@@ -14,7 +14,7 @@ void percorreDEP(ArvoreNode* node);
 
 /*
  Cria uma estrutura de arvore que serve como Header. Como está sendo criada não existe uma raiz
- por isso nasce como null. 
+ por isso nasce como null.
  O mesmo vale para o numero de nodes.
 */
 ArvoreBusca* cria_abb(){
@@ -35,9 +35,9 @@ int abb_vazia(ArvoreBusca *a){
 }
 
 /*
- Função busca um elemento da arvore de acordo com o inteiro informado, 
+ Função busca um elemento da arvore de acordo com o inteiro informado,
  caso a função encontre dentro da ArvoreNode.info o elemento será então
- retornado um ponteiro apontando para o elemento. 
+ retornado um ponteiro apontando para o elemento.
  Caso não seja encontrado o elemento será retornado um ponteiro para NULL;
 */
 int busca_abb(ArvoreBusca* a, int elem, ArvoreNode** referencia){
@@ -86,7 +86,7 @@ int insere_abb(ArvoreBusca *a, int elemento){
 
 /*
 Remove o elemento da arvore e ajusta a arvore.
-    Ajuste: Caso um elemente se encontrado e removido em seu lugar será incluido o maior elemento que está 
+    Ajuste: Caso um elemente se encontrado e removido em seu lugar será incluido o maior elemento que está
     no node a esquerda.
     Caso o elemento deletado não contenha um node a esquerda o ajuste irá buscar o menor elemento do node a direita.
 */
@@ -118,7 +118,7 @@ int remove_abb(ArvoreBusca *a, int elem){
 /*
 Função interna que será chamada recursivamente para remover os nodes de uma arvore.
 nela é implementada a regra de ajuste da arvore. Uma vez que um node é informado para elem_a_deletar
-a lógica busca qual o node mais a direita que está no filho esquerdo. Caso não exista um node esquerdo 
+a lógica busca qual o node mais a direita que está no filho esquerdo. Caso não exista um node esquerdo
 será buscado o node mais a esquerda do filho direito.
 
 Exemplo: Caso exista filho esquerdo:
@@ -139,10 +139,10 @@ Exemplo: Caso exista filho direito:
                      **************
                     | info_Deletar |
                      **************
-                     ^              \              
-                     |               ***********     
+                     ^              \
+                     |               ***********
                      |              | info_menor|    | O node info_Deletar irá receber o valor do node info_troca ( o mais a esquerda abaixo do filho direito)
-                     |               ***********     
+                     |               ***********
                      -             /
                      ************
                     | info_troca |
@@ -175,6 +175,10 @@ int remover(ArvoreNode *elem_a_deletar){
     return status;
 }
 
+/*
+Percorre uma arvore imprimindo no console o valor para o usuario, de forma que a impressão aconteça entre o percorrimento dos
+filhos direitos e esquedo.
+*/
 int percorre_in(ArvoreBusca *a){
     int status = OP_OK;
     if(a != NULL){
@@ -189,6 +193,42 @@ int percorre_in(ArvoreBusca *a){
     return status;
 }
 
+
+/*
+Percorre uma arvore imprimindo no console o valor para o usuario, de forma que a impressão aconteça antes do percorrimento dos
+filhos direitos e esquedo.
+*/
+int percorre_pre(ArvoreBusca *a){
+    int status = OP_OK;
+    if(a != NULL){
+        if(a->raiz != NULL){
+            percorrePDE(a->raiz);
+        }else{
+            status = ERR_NODE_INDEFINIDO;
+        }
+    }else{
+        status = ERR_ARVORE_INDEFINIDA;
+    }
+    return status;
+}
+
+/*
+Percorre uma arvore imprimindo no console o valor para o usuario, de forma que a impressão aconteça após o percorrimento dos
+filhos direitos e esquedo.
+*/
+int percorre_pos(ArvoreBusca *a){
+    int status = OP_OK;
+    if(a != NULL){
+        if(a->raiz != NULL){
+            percorreDEP(a->raiz);
+        }else{
+            status = ERR_NODE_INDEFINIDO;
+        }
+    }else{
+        status = ERR_ARVORE_INDEFINIDA;
+    }
+    return status;
+}
 /*
 Função interna utilizada para percorrer de forma recursiva a arvore procurando no ArvoreNode.info o elemento informado.
 A cada interação o ponteiro node é movimentado para no final caso exista o elemento procurado aponto examente para o node.
@@ -228,14 +268,14 @@ exemplo:
     ******
    | node |
     ******
-            \              
-             **********     
-            | node_dir |   
-             ********** 
-                    \              
-                     ***************   
-                    | node_mais_dir | --> Será retornado uma referencia para esse ArvoreNode;   
-                     *************** 
+            \
+             **********
+            | node_dir |
+             **********
+                    \
+                     ***************
+                    | node_mais_dir | --> Será retornado uma referencia para esse ArvoreNode;
+                     ***************
 */
 void busca_ultima_referencia_direira(ArvoreNode **node){
     if(*node != NULL && (*node)->dir != NULL){
@@ -249,14 +289,14 @@ void busca_ultima_referencia_direira(ArvoreNode **node){
                      ******
                     | node |
                      ******
-                   /            
-                **********     
-               | node_esq |    
-                ********** 
-                /            
-             ***************    
-            | node_mais_esq | --> Será retornada uma referencia para esse objeto.    
-             ***************     
+                   /
+                **********
+               | node_esq |
+                **********
+                /
+             ***************
+            | node_mais_esq | --> Será retornada uma referencia para esse objeto.
+             ***************
 */
 void busca_ultima_referencia_esquerda(ArvoreNode **node){
     if(*node != NULL && (*node)->esq != NULL){
@@ -291,7 +331,10 @@ int cria_filho(ArvoreNode* node, int elemento){
     }
     return status;
 }
-
+/*
+Função interna para percorrer uma arvore e mostrar o conteudo de cada no de acordo com a seguinte regra:
+ Percorre primeiro o nó a direita, e antes de ir ao nó a esqueda mostra o valor do node, depois percorre a arvore a esquerda.
+*/
 void percorreIN(ArvoreNode* node){
     if(node->dir != NULL){
         percorreIN(node->dir);
@@ -302,8 +345,13 @@ void percorreIN(ArvoreNode* node){
     }
 }
 
+/*
+Função interna para percorrer uma arvore e mostrar o conteudo de cada no de acordo com a seguinte regra:
+ Antes de percorrer a arvore mostra o valor do node, depois percorre a arvore pelo filho direito e quando chegar ao final
+ percorre pelo filho esquerdo.
+*/
 void percorrePDE(ArvoreNode* node){
-    printf("%d", node->info);
+    printf("%d\n", node->info);
     if(node->dir != NULL){
         percorrePDE(node->dir);
     }
@@ -313,13 +361,18 @@ void percorrePDE(ArvoreNode* node){
     return;
 }
 
+/*
+Função interna para percorrer uma arvore e mostrar o conteudo de cada no de acordo com a seguinte regra:
+ Percorre a arvore pelo filho direito e quando chegar ao final percorre pelo filho esquerdo após percorrer
+ os dois caminhos mostra a informaço do node.
+*/
 void percorreDEP(ArvoreNode* node){
     if(node->dir != NULL){
-        percorrePDE(node->dir);
+        percorreDEP(node->dir);
     }
     if(node->esq != NULL){
-        percorrePDE(node->esq);
+        percorreDEP(node->esq);
     }
-    printf("%d", node->info);
+    printf("%d\n", node->info);
     return;
 }
