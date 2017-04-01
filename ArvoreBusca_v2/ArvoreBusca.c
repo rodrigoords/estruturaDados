@@ -5,6 +5,9 @@ ArvoreNode* cria_node(int elemento, ArvoreNode *pai);
 int busca_referencia(ArvoreNode **node, int elemento);
 void busca_ultima_referencia_direita(ArvoreNode **node);
 void busca_ultima_referencia_esquerda(ArvoreNode **node);
+ArvoreNode* cria_node(int elemento, ArvoreNode *pai);
+ArvoreNode* cria_node_dummy();
+int insere(ArvoreNode **a, int elem);
 int remover(ArvoreNode **a, int elem_a_deletar);
 void percorreIN(ArvoreNode* node);
 void percorrePDE(ArvoreNode* node);
@@ -331,17 +334,17 @@ void busca_ultima_referencia_direita(ArvoreNode **node){
 }
 
 /*
-                     ******
-                    | node |
-                     ******
-                   /
-                **********
-               | node_esq |
-                **********
-                /
-             ***************
-            | node_mais_esq | --> Será retornada uma referencia para esse objeto.
-             ***************
+             ******
+            | node |
+             ******
+           /
+        **********
+       | node_esq |
+        **********
+        /
+     ***************
+    | node_mais_esq | --> Será retornada uma referencia para esse objeto.
+     ***************
 */
 void busca_ultima_referencia_esquerda(ArvoreNode **node){
     while(*node != NULL && (*node)->esq != NULL){
@@ -350,13 +353,19 @@ void busca_ultima_referencia_esquerda(ArvoreNode **node){
     return;
 }
 
+ArvoreNode* cria_node_dummy(){
+    ArvoreNode* novo_node = (ArvoreNode*)malloc(sizeof(ArvoreNode));
+    novo_node->pai  = NULL;
+    novo_node->esq  = NULL;
+    novo_node->dir  = NULL;
+    return novo_node;
+}
+
 /*Função auxiliar para criar um node.*/
 ArvoreNode* cria_node(int elemento, ArvoreNode *pai){
-    ArvoreNode* novo_node = (ArvoreNode*)malloc(sizeof(ArvoreNode));
+    ArvoreNode* novo_node = cria_node_dummy();
     novo_node->pai = pai;
     novo_node->info = elemento;
-    novo_node->esq = NULL;
-    novo_node->dir = NULL;
     novo_node->alt = 0;
     return novo_node;
 }
