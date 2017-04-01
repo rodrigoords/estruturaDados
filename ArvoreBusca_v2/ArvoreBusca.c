@@ -2,7 +2,6 @@
 
 /* Funções internas*/
 ArvoreNode* cria_node(int elemento, ArvoreNode *pai);
-int cria_filho(ArvoreNode* node, int elemento);
 int busca_referencia(ArvoreNode **node, int elemento);
 void busca_ultima_referencia_direita(ArvoreNode **node);
 void busca_ultima_referencia_esquerda(ArvoreNode **node);
@@ -325,9 +324,8 @@ exemplo:
                      ***************
 */
 void busca_ultima_referencia_direita(ArvoreNode **node){
-    if(*node != NULL && (*node)->dir != NULL){
+    while(*node != NULL && (*node)->dir != NULL){
         *node = (*node)->dir;
-        busca_ultima_referencia_direita(node);
     }
     return;
 }
@@ -346,9 +344,8 @@ void busca_ultima_referencia_direita(ArvoreNode **node){
              ***************
 */
 void busca_ultima_referencia_esquerda(ArvoreNode **node){
-    if(*node != NULL && (*node)->esq != NULL){
+    while(*node != NULL && (*node)->esq != NULL){
         *node = (*node)->esq;
-        busca_ultima_referencia_esquerda(node);
     }
     return;
 }
@@ -364,21 +361,6 @@ ArvoreNode* cria_node(int elemento, ArvoreNode *pai){
     return novo_node;
 }
 
-int cria_filho(ArvoreNode* node, int elemento){
-    int status = OP_OK;
-    if(node!=NULL){
-        if(node->info < elemento){
-            node->dir = cria_node(elemento, node);
-        } else if(node->info > elemento){
-            node->esq = cria_node(elemento, node);
-        }else{
-            status = ERR_ELEM_DUPLICADO;
-        }
-    }else{
-        status = ERR_NODE_INDEFINIDO;
-    }
-    return status;
-}
 /*
 Função interna para percorrer uma arvore e mostrar o conteudo de cada no de acordo com a seguinte regra:
  Percorre primeiro o nó a direita, e antes de ir ao nó a esqueda mostra o valor do node, depois percorre a arvore a esquerda.
