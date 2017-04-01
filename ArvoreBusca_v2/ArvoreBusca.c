@@ -1,12 +1,10 @@
 #include "ArvoreBusca.h"
 
 /* Funções internas*/
-ArvoreNode* cria_node(int elemento, ArvoreNode *pai);
+ArvoreNode* cria_node(int elemento);
 int busca_referencia(ArvoreNode **node, int elemento);
 void busca_ultima_referencia_direita(ArvoreNode **node);
 void busca_ultima_referencia_esquerda(ArvoreNode **node);
-ArvoreNode* cria_node(int elemento, ArvoreNode *pai);
-ArvoreNode* cria_node_dummy();
 int insere(ArvoreNode **a, int elem);
 int remover(ArvoreNode **a, int elem_a_deletar);
 void percorreIN(ArvoreNode* node);
@@ -76,7 +74,7 @@ int insere_abb(ArvoreBusca *a, int elemento){
     if (a != NULL) {
             /* Árvore Vazia */
             if (a->raiz == NULL) {
-                a->raiz = cria_node(elemento, a->raiz);
+                a->raiz = cria_node(elemento);
             } else {
                 /* Árvore já possui elementos */
                 status = insere(&(a->raiz), elemento);
@@ -181,14 +179,14 @@ int insere(ArvoreNode **a, int elem) {
             status = insere(&((*a)->esq), elem);
         } else {
             /* Encontrei ponto de inserção à esquerda */
-            (*a)->esq = cria_node(elem, *a);
+            (*a)->esq = cria_node(elem);
         }
     } else if ((*a)->info < elem) {
         if ((*a)->dir != NULL) {
             status = insere(&((*a)->dir), elem);
         } else {
             /* Encontrei ponto de inserção à direita */
-            (*a)->dir = cria_node(elem, *a);
+            (*a)->dir = cria_node(elem);
         }
     } else {
         status = ERR_ELEM_DUPLICADO;
@@ -261,14 +259,8 @@ int remover(ArvoreNode **a, int elem_a_deletar) {
             (*a)->info = aux->info;
             status = remover(&((*a)->dir), aux->info);
         }else{
-            if ((*a)->pai->dir != NULL && (*a)->pai->dir->info == (*a)->info){
-                (*a)->pai->dir = NULL;
-            }else{
-                (*a)->pai->esq = NULL;
-            }
             free((*a));
-            return status; // Após liberar a memória eu não tenho mais um node para trabalhar, não existe a necessidade
-                           // de realizar um reajuste, por isso o retun nesse ponto, a recursão irá recalcular do node acima.
+            (*a) = NULL;
         }
     }
 
@@ -353,20 +345,15 @@ void busca_ultima_referencia_esquerda(ArvoreNode **node){
     return;
 }
 
-ArvoreNode* cria_node_dummy(){
+/*Função auxiliar para criar um node.*/
+ArvoreNode* cria_node(int elemento){
     ArvoreNode* novo_node = (ArvoreNode*)malloc(sizeof(ArvoreNode));
-    novo_node->pai  = NULL;
+
     novo_node->esq  = NULL;
     novo_node->dir  = NULL;
-    return novo_node;
-}
-
-/*Função auxiliar para criar um node.*/
-ArvoreNode* cria_node(int elemento, ArvoreNode *pai){
-    ArvoreNode* novo_node = cria_node_dummy();
-    novo_node->pai = pai;
     novo_node->info = elemento;
     novo_node->alt = 0;
+
     return novo_node;
 }
 
@@ -378,7 +365,7 @@ void percorreIN(ArvoreNode* node){
     if(node->dir != NULL){
         percorreIN(node->dir);
     }
-    printf("info: %d | pai: %d\n", node->info, node->pai != NULL ? node->pai->info : 0);
+    printf("info: %d\n", node->info);
     if(node->esq != NULL){
         percorreIN(node->esq);
     }
@@ -439,13 +426,7 @@ void rotacao_RR(ArvoreNode **node_A) {
     ArvoreNode *node_B = (*node_A)->esq;
     (*node_A)->esq = node_B->dir;
 
-    if(node_B->dir != NULL)
-        node_B->dir->pai = (*node_A);
-
     node_B->dir = (*node_A);
-
-    node_B->pai = (*node_A)->pai;
-    (*node_A)->pai = node_B;
 
     (*node_A)->alt = maior(altNode((*node_A)->esq),
                            altNode((*node_A)->dir)) + 1;
@@ -473,13 +454,7 @@ void rotacao_LL(ArvoreNode **node_A) {
     ArvoreNode *node_B = (*node_A)->dir;
     (*node_A)->dir = node_B->esq;
 
-    if(node_B->esq != NULL)
-        node_B->esq->pai = (*node_A);
-
     node_B->esq = (*node_A);
-
-    node_B->pai = (*node_A)->pai;
-    (*node_A)->pai = node_B;
 
     (*node_A)->alt = maior(altNode((*node_A)->esq),
                            altNode((*node_A)->dir)) + 1;
@@ -540,27 +515,28 @@ int altNode(ArvoreNode *node){
 }
 
 void reajustaArvore(ArvoreNode **a){
-    int fb = calcFB(*a);
-    if (fb > 1) {
-        /* Desbalanceado à esquerda A(+2)*/
-        if (calcFB((*a)->esq) > 0) {
-            /* Rotação RR: B(+1)*/
-            rotacao_RR(a);
+    if((*a) != NULL){    int fb = calcFB(*a);
+        if (fb > 1) {
+            /* Desbalanceado à esquerda A(+2)*/
+            if (calcFB((*a)->esq) > 0) {
+                /* Rotação RR: B(+1)*/
+                rotacao_RR(a);
+            } else {
+                /* Rotação LR: B(-1)*/
+                rotacao_LR(a);
+            }
+        } else if (fb < -1) {
+            /* Desbalanceado à direita A(-2) */
+            if (calcFB((*a)->dir) > 0) {
+                /* Rotação RL: B(+1)*/
+                rotacao_RL(a);
+            } else {
+                /* Rotação LL: B(-1)*/
+                rotacao_LL(a);
+            }
         } else {
-            /* Rotação LR: B(-1)*/
-            rotacao_LR(a);
+            (*a)->alt = maior(altNode((*a)->esq),
+                           altNode((*a)->dir)) + 1;
         }
-    } else if (fb < -1) {
-        /* Desbalanceado à direita A(-2) */
-        if (calcFB((*a)->dir) > 0) {
-            /* Rotação RL: B(+1)*/
-            rotacao_RL(a);
-        } else {
-            /* Rotação LL: B(-1)*/
-            rotacao_LL(a);
-        }
-    } else {
-        (*a)->alt = maior(altNode((*a)->esq),
-                       altNode((*a)->dir)) + 1;
     }
 }

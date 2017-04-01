@@ -16,7 +16,6 @@
 
 /* Arvore Node */
 typedef struct s_arvore_node {
-    struct s_arvore_node *pai;
     struct s_arvore_node *esq;
     struct s_arvore_node *dir;
     int alt;
