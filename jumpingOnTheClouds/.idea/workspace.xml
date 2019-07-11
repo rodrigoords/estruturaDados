@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a741cec-2b48-4cd6-b88a-b7483121b1a8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../jumpingOnTheClouds/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jumpingOnTheClouds/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a90532e5-0bf7-4a3f-a8b1-8304722dc771" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../countingValleys/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../countingValleys/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,12 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="2" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="2" />
-              <folding>
-                <element signature="e#2186#2187#0" expanded="true" />
-                <element signature="e#2244#2245#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="101">
+              <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -62,8 +58,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="countingValleys" type="b2602c69:ProjectViewProjectNode" />
-              <item name="countingValleys" type="462c0819:PsiDirectoryNode" />
+              <item name="jumpingOnTheClouds" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jumpingOnTheClouds" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -74,7 +70,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562802163399" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562813430302" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -91,7 +87,7 @@
   <component name="RunManager">
     <configuration name="Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Solution" />
-      <module name="countingValleys" />
+      <module name="jumpingOnTheClouds" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -107,16 +103,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0a741cec-2b48-4cd6-b88a-b7483121b1a8" name="Default Changelist" comment="" />
-      <created>1562799377893</created>
+      <changelist id="a90532e5-0bf7-4a3f-a8b1-8304722dc771" name="Default Changelist" comment="" />
+      <created>1562801347958</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1562799377893</updated>
+      <updated>1562801347958</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="816" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="814" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" />
@@ -137,8 +133,8 @@
       <window_info anchor="bottom" id="Console" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32872927" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39917126" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32825485" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40027702" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -157,22 +153,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Solution.java</url>
-          <line>62</line>
+          <line>50</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>c[index + 2]</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="2" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="2" />
-          <folding>
-            <element signature="e#2186#2187#0" expanded="true" />
-            <element signature="e#2244#2245#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="101">
+          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
         </state>
       </provider>
     </entry>
