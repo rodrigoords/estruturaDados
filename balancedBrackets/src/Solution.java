@@ -1,11 +1,13 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Stack;
 
 public class Solution {
 
   // Complete the isBalanced function below.
   static String isBalanced(String s) {
 
+    Stack teste = new Stack();
     if(s.length() % 2 > 0)
       return "NO";
 

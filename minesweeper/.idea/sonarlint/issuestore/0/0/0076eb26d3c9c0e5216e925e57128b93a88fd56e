@@ -1,0 +1,10 @@
+
+V
+squid:S106"9Replace this use of System.out or System.err by a logger.(Ë²œÂ8›²¨‹ƒ.
+Isquid:S1481"+Remove this unused "bombs2" local variable.(¤—ìÅ8¬ª—‹ƒ.
+_squid:UselessImportCheck"4Remove this unused import 'java.util.stream.Stream'.(ó÷”8¸£‹ƒ.
+[
+squid:S106 "9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8›²¨‹ƒ.
+Nsquid:S1481"+Remove this unused "bombs1" local variable.(Û¦†éûÿÿÿÿ8ÏÎ¨‹ƒ.
+Xsquid:S1854":Remove this useless assignment to local variable "bombs2".(¤—ìÅ8¬ª—‹ƒ.
+]squid:S1854":Remove this useless assignment to local variable "bombs1".(Û¦†éûÿÿÿÿ8ÏÎ¨‹ƒ.

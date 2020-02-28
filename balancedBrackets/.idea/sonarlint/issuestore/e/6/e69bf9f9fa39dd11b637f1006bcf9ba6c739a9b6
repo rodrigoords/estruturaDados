@@ -1,0 +1,8 @@
+
+nsquid:S1149
+"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(¨‡Óø8éî“àÂ-
+]squid:S1118":Add a private constructor to hide the implicit public one.(æÌ†Ãşÿÿÿÿ8ßª²Â-
+Wsquid:S1854
+"9Remove this useless assignment to local variable "teste".(¨‡Óø8ßŠ”àÂ-
+Hsquid:S1481
+"*Remove this unused "teste" local variable.(¨‡Óø8éî“àÂ-
