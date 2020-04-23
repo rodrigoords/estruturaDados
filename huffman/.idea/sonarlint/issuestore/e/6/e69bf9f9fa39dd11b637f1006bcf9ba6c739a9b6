@@ -1,0 +1,7 @@
+
+Fsquid:S1659/"#Declare "right" on a separate line.(æ¹Øÿüÿÿÿÿ8òàä£š.
+…"squid:ClassVariableVisibilityCheck."PMake data a static final constant or non-public and provide accessors if needed.(æñÆÒ8™éµ¢š.
+Š"squid:ClassVariableVisibilityCheck/"PMake left a static final constant or non-public and provide accessors if needed.(æ¹Øÿüÿÿÿÿ8òàä£š.
+Y
+squid:S106"9Replace this use of System.out or System.err by a logger.(­–ÒÁøÿÿÿÿ8÷ÏÇ£š.
+‹"squid:ClassVariableVisibilityCheck/"QMake right a static final constant or non-public and provide accessors if needed.(æ¹Øÿüÿÿÿÿ8òàä£š.
